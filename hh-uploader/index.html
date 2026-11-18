@@ -1,0 +1,11 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HH Uploader · how it works</title><link rel="stylesheet" href="../style.css"></head><body><main>
+<h1>HH Uploader</h1><p class="mute">The private publishing tool of the Headlines &amp; History YouTube channel · uses <strong style="color:#ff3b30">YouTube</strong> API Services</p>
+<h2>What it does</h2>
+<ol><li>The channel owner signs in once with Google OAuth 2.0 (scopes: youtube.upload, youtube.force-ssl, yt-analytics.readonly) and chooses the Headlines &amp; History channel.</li>
+<li><code>publish</code>: uploads the channel's finished video (videos.insert, resumable), sets title, description, tags, category, language, made-for-kids and altered-content flags and the publish time (videos.update), sets the custom thumbnail (thumbnails.set), uploads the English captions (captions.insert) and adds the video to a playlist (playlists.list / playlistItems.insert).</li>
+<li><code>comments</code> / <code>reply</code>: lists comments on the channel's own videos that have no reply yet (commentThreads.list) and posts the channel's reply (comments.insert).</li>
+<li><code>stats</code>: reads the channel's own numbers for a video (videos.list and YouTube Analytics reports).</li></ol>
+<p>It runs only for the channel owner, on the owner's private cloud workspace. Nothing is sold or shared; see the <a href="../privacy.html">privacy policy</a>.</p>
+<h2>Complete script</h2><p><a href="yt_api.py">yt_api.py</a> (Python 3, uses the requests library). Credentials are read from private environment variables and are never stored in the code.</p>
+</main></body></html>
